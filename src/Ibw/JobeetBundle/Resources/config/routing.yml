@@ -1,0 +1,48 @@
+IbwJobeetBundle_category:
+    pattern: /category/{slug}/{page}
+    defaults: { _controller: IbwJobeetBundle:Category:show, page: 1 }
+
+ibw_jobeet_ibw_job:
+    resource: "@IbwJobeetBundle/Resources/config/routing/job.yml"
+    prefix:   /ibw_job
+
+ibw_jobeet_homepage:
+    pattern:  /
+    defaults: { _controller: IbwJobeetBundle:Job:index }
+
+IbwJobeetBundle_job:
+    resource: "@IbwJobeetBundle/Resources/config/routing/job.yml"
+    prefix:   /job
+
+ibw_job:
+    pattern:  /
+    defaults: { _controller: "IbwJobeetBundle:Job:index" }
+
+ibw_job_show:
+    pattern:  /{company}/{location}/{id}/{position}
+    defaults: { _controller: "IbwJobeetBundle:Job:show" }
+    requirements:
+        id:  \d+
+
+ibw_job_new:
+    pattern:  /new
+    defaults: { _controller: "IbwJobeetBundle:Job:new" }
+
+ibw_job_create:
+    pattern:  /create
+    defaults: { _controller: "IbwJobeetBundle:Job:create" }
+    requirements: { _method: post }
+
+ibw_job_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "IbwJobeetBundle:Job:edit" }
+
+ibw_job_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "IbwJobeetBundle:Job:update" }
+    requirements: { _method: post|put }
+
+ibw_job_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "IbwJobeetBundle:Job:delete" }
+    requirements: { _method: post|delete }
