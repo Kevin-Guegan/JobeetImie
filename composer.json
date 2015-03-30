@@ -24,7 +24,12 @@
 		"sensio/distribution-bundle" : "~3.0,>=3.0.12",
 		"sensio/framework-extra-bundle" : "~3.0,>=3.0.2",
 		"incenteev/composer-parameter-handler" : "~2.0",
-		"phpunit/phpunit" : "3.7.*"
+		"phpunit/phpunit" : "3.7.*",
+		"sonata-project/core-bundle": "~2.2@dev",
+        "sonata-project/admin-bundle": "~2.3",
+        "sonata-project/doctrine-orm-admin-bundle": "~2.3",
+        "sonata-project/easy-extends-bundle": "~2.1",
+        "sonata-project/user-bundle": "~2.2"
 	},
 	"require-dev" : {
 		"sensio/generator-bundle" : "~2.3"

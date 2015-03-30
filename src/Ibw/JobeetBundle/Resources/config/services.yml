@@ -1,4 +1,18 @@
 services:
-#    ibw_jobeet.example:
-#        class: Ibw\JobeetBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ibw.jobeet.admin.category:
+        class: Ibw\JobeetBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Categories }
+        arguments:
+            - ~
+            - Ibw\JobeetBundle\Entity\Category
+            - 'IbwJobeetBundle:CategoryAdmin'
+ 
+    ibw.jobeet.admin.job:
+        class: Ibw\JobeetBundle\Admin\JobAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Jobs }
+        arguments:
+            - ~
+            - Ibw\JobeetBundle\Entity\Job
+            - 'IbwJobeetBundle:JobAdmin'

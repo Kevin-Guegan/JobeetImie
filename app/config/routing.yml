@@ -4,4 +4,13 @@ ibw_jobeet:
 
 app:
     resource: @AppBundle/Controller/
-    type:     annotation
+    type:    annotation
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
