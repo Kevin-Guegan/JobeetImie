@@ -46,7 +46,11 @@ class JobController extends Controller
         $form->bind($request);
  
        if ($form->isValid()) {
-        // ... 
+        $em = $this->getDoctrine()->getManager();
+        
+        $em->persist($entity);
+        $em->flush();
+        
         return $this->redirect($this->generateUrl('ibw_job_preview', array(
             'company' => $entity->getCompanySlug(),
             'location' => $entity->getLocationSlug(),
@@ -232,20 +236,22 @@ class JobController extends Controller
     public function previewAction($token)
     {
         $em = $this->getDoctrine()->getManager();
-    
+     
         $entity = $em->getRepository('IbwJobeetBundle:Job')->findOneByToken($token);
-    
+     
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Job entity.');
         }
-  
+     
         $deleteForm = $this->createDeleteForm($entity->getToken());
         $publishForm = $this->createPublishForm($entity->getToken());
- 
+        $extendForm = $this->createExtendForm($entity->getToken());
+     
         return $this->render('IbwJobeetBundle:Job:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
             'publish_form' => $publishForm->createView(),
+            'extend_form' => $extendForm->createView(),
         ));
     }
     
@@ -283,5 +289,78 @@ class JobController extends Controller
         ->add('token', 'hidden')
         ->getForm()
         ;
+    }
+    
+    public function extendAction(Request $request, $token)
+    {
+        $form = $this->createExtendForm($token);
+        $request = $this->getRequest();
+    
+        $form->bind($request);
+    
+        if($form->isValid()) {
+            $em=$this->getDoctrine()->getManager();
+            $entity = $em->getRepository('IbwJobeetBundle:Job')->findOneByToken($token);
+    
+            if(!$entity){
+                throw $this->createNotFoundException('Unable to find Job entity.');
+            }
+    
+            if(!$entity->extend()){
+                throw $this->createNodFoundException('Unable to extend the Job');
+            }
+    
+            $em->persist($entity);
+            $em->flush();
+    
+            $this->get('session')->getFlashBag()->add('notice', sprintf('Your job validity has been extended until %s', $entity->getExpiresAt()->format('m/d/Y')));
+        }
+    
+        return $this->redirect($this->generateUrl('ibw_job_preview', array(
+            'company' => $entity->getCompanySlug(),
+            'location' => $entity->getLocationSlug(),
+            'token' => $entity->getToken(),
+            'position' => $entity->getPositionSlug()
+        )));
+    }
+    
+    private function createExtendForm($token)
+    {
+        return $this->createFormBuilder(array('token' => $token))
+        ->add('token', 'hidden')
+        ->getForm();
+    }
+    
+    public function testExtendJob()
+    {
+        // A job validity cannot be extended before the job expires soon
+        $client = $this->createJob(array('job[position]' => 'FOO4'), true);
+        $crawler = $client->getCrawler();
+        $this->assertTrue($crawler->filter('input[type=submit]:contains("Extend")')->count() == 0);
+    
+        // A job validity can be extended when the job expires soon
+    
+        // Create a new FOO5 job
+        $client = $this->createJob(array('job[position]' => 'FOO5'), true);
+    
+        // Get the job and change the expire date to today
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
+        $job = $em->getRepository('IbwJobeetBundle:Job')->findOneByPosition('FOO5');
+        $job->setExpiresAt(new \DateTime());
+        $em->flush();
+    
+        // Go to the preview page and extend the job
+        $crawler = $client->request('GET', sprintf('/job/%s/%s/%s/%s', $job->getCompanySlug(), $job->getLocationSlug(), $job->getToken(), $job->getPositionSlug()));
+        $crawler = $client->getCrawler();
+        $form = $crawler->selectButton('Extend')->form();
+        $client->submit($form);
+    
+        // Reload the job from db
+        $job = $this->getJobByPosition('FOO5');
+    
+        // Check the expiration date
+        $this->assertTrue($job->getExpiresAt()->format('y/m/d') == date('y/m/d', time() + 86400 * 30));
     }
 }
