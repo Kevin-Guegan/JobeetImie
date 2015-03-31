@@ -19,3 +19,13 @@ login_check:
     
 logout:
     pattern:   /logout
+    
+IbwJobeetBundle_api:
+    pattern: /api/{token}/jobs.{_format}
+    defaults: {_controller: "IbwJobeetBundle:Api:list"}
+    requirements:
+        _format: xml|json|yaml
+
+IbwJobeetBundle_ibw_affiliate:
+    resource: "@IbwJobeetBundle/Resources/config/routing/affiliate.yml"
+    prefix:   /affiliate
