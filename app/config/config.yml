@@ -89,3 +89,5 @@ sonata_block:
         sonata.block.service.text:
         sonata.block.service.action:
         sonata.block.service.rss:
+
+nelmio_api_doc: ~

@@ -148,26 +148,46 @@ class Category
         return $this->affiliates;
     }
 
+    /**
+     * 
+     * @return Ambigous <string, \Ibw\JobeetBundle\Entity\string>
+     */
     public function __toString()
     {
         return $this->getName() ? $this->getName() : "";
     }
 
+    /**
+     * 
+     * @param unknown $jobs
+     */
     public function setActiveJobs($jobs)
     {
         $this->active_jobs = $jobs;
     }
  
+    /**
+     * 
+     * @return unknown
+     */
     public function getActiveJobs()
     {
         return $this->active_jobs;
     }
 
+    /**
+     * 
+     * @param unknown $jobs
+     */
     public function setMoreJobs($jobs)
     {
         $this->more_jobs = $jobs >=  0 ? $jobs : 0;
     }
- 
+
+    /**
+     * 
+     * @return Ambigous <number, unknown>
+     */
     public function getMoreJobs()
     {
         return $this->more_jobs;
@@ -196,6 +216,9 @@ class Category
         return $this->slug;
     }
 
+    /**
+     * 
+     */
     public function setSlugValue()
     {
         $this->slug = Jobeet::slugify($this->getName());

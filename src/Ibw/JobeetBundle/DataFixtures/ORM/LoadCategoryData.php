@@ -8,6 +8,10 @@ use Ibw\JobeetBundle\Entity\Category;
 
 class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * (non-PHPdoc)
+     * @see \Doctrine\Common\DataFixtures\FixtureInterface::load()
+     */
     public function load(ObjectManager $em)
     {
         $design = new Category();
@@ -34,6 +38,10 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
         $this->addReference('category-administrator', $administrator);
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Doctrine\Common\DataFixtures\OrderedFixtureInterface::getOrder()
+     */
     public function getOrder()
     {
         return 1; // the order in which fixtures will be loaded

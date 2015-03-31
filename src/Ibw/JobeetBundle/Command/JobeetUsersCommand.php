@@ -12,6 +12,10 @@ use Ibw\JobeetBundle\Entity\User;
 
 class JobeetUsersCommand extends ContainerAwareCommand
 {
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Console\Command\Command::configure()
+     */
     protected function configure()
     {
         $this
@@ -22,6 +26,10 @@ class JobeetUsersCommand extends ContainerAwareCommand
         ;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Console\Command\Command::execute()
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $username = $input->getArgument('username');

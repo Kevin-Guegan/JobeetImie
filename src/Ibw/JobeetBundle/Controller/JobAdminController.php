@@ -8,6 +8,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  
 class JobAdminController extends Controller
 {
+    /**
+     * 
+     * @param ProxyQueryInterface $selectedModelQuery
+     * @throws AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function batchActionExtend(ProxyQueryInterface $selectedModelQuery)
     {
         if ($this->admin->isGranted('EDIT') === false || $this->admin->isGranted('DELETE') === false) {
@@ -34,11 +40,20 @@ class JobAdminController extends Controller
         return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function batchActionDeleteNeverActivatedIsRelevant()
     {
         return true;
     }
     
+    /**
+     * 
+     * @throws AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function batchActionDeleteNeverActivated()
     {
         if ($this->admin->isGranted('EDIT') === false || $this->admin->isGranted('DELETE') === false) {

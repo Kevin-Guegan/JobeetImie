@@ -10,6 +10,10 @@ use Ibw\JobeetBundle\Entity\Category;
  
 class AffiliateController extends Controller
 {
+    /**
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function newAction()
     {
         $entity = new Affiliate();
@@ -21,6 +25,11 @@ class AffiliateController extends Controller
         ));
     }
     
+    /**
+     * 
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request)
     {
         $affiliate = new Affiliate();
@@ -47,6 +56,10 @@ class AffiliateController extends Controller
         ));
     }
     
+    /**
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function waitAction()
     {
         return $this->render('IbwJobeetBundle:Affiliate:wait.html.twig');

@@ -13,9 +13,23 @@ use Symfony\Component\DomCrawler\Crawler;
  
 class AffiliateControllerTest extends WebTestCase
 {
+    /**
+     * 
+     * @var unknown
+     */
     private $em;
+    
+    /**
+     * 
+     * 
+     * @var unknown
+     */
     private $application;
  
+    /**
+     * (non-PHPdoc)
+     * @see PHPUnit_Framework_TestCase::setUp()
+     */
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -68,6 +82,9 @@ class AffiliateControllerTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
  
+    /**
+     * 
+     */
     public function testAffiliateForm()
     {
         $client = static::createClient();
@@ -103,6 +120,10 @@ class AffiliateControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('#affiliate_email')->siblings()->first()->filter('.error_list')->count() == 1);
     }
  
+    /**
+     * 
+     * @return \Symfony\Bundle\FrameworkBundle\Client
+     */
     public function testCreate()
     {
         $client = static::createClient();
@@ -120,6 +141,9 @@ class AffiliateControllerTest extends WebTestCase
         return $client;
     }
  
+    /**
+     * 
+     */
     public function testWait()
     {
         $client = static::createClient();

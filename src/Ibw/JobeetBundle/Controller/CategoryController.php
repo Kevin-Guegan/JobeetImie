@@ -10,6 +10,12 @@ use Ibw\JobeetBundle\Entity\Category;
 class CategoryController extends Controller
 {
 
+    /**
+     * 
+     * @param unknown $slug
+     * @param unknown $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction($slug, $page)
     {
         $em = $this->getDoctrine()->getManager();

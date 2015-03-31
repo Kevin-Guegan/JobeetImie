@@ -11,6 +11,10 @@ use Ibw\JobeetBundle\Entity\Job;
 
 class JobeetCleanupCommand extends ContainerAwareCommand {
 
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Console\Command\Command::configure()
+     */
     protected function configure()
     {
         $this
@@ -20,6 +24,10 @@ class JobeetCleanupCommand extends ContainerAwareCommand {
         ;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Console\Command\Command::execute()
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $days = $input->getArgument('days');

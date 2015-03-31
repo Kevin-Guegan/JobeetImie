@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "64bae1d9e34d95aca7a7525765244256",
+    "hash": "60cc3aeaef2d2163710f239a68679c47",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2346,12 +2346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "e2ccc45c122367dd72495e9a1eae89f7cf7cdb42"
+                "reference": "04a0bafdc550cb42b4aca1b1fe84c1672156a3db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/e2ccc45c122367dd72495e9a1eae89f7cf7cdb42",
-                "reference": "e2ccc45c122367dd72495e9a1eae89f7cf7cdb42",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/04a0bafdc550cb42b4aca1b1fe84c1672156a3db",
+                "reference": "04a0bafdc550cb42b4aca1b1fe84c1672156a3db",
                 "shasum": ""
             },
             "require": {
@@ -2403,7 +2403,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2015-03-28 20:37:40"
+            "time": "2015-03-31 08:28:02"
         },
         {
             "name": "sonata-project/doctrine-extensions",

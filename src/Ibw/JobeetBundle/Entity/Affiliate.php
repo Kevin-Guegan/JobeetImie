@@ -230,6 +230,10 @@ class Affiliate
         return $this;
     }
     
+    /**
+     * 
+     * @return \Ibw\JobeetBundle\Entity\boolean
+     */
     public function activate()
     {
         if(!$this->getIsActive()) {
@@ -239,6 +243,10 @@ class Affiliate
         return $this->is_active;
     }
     
+    /**
+     * 
+     * @return \Ibw\JobeetBundle\Entity\boolean
+     */
     public function deactivate()
     {
         if($this->getIsActive()) {

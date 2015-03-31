@@ -11,6 +11,12 @@ use Ibw\JobeetBundle\Repository\AffiliateRepository;
  
 class ApiController extends Controller
 {
+    /**
+     * 
+     * @param Request $request
+     * @param unknown $token
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function listAction(Request $request, $token)
     {
         $em = $this->getDoctrine()->getManager();

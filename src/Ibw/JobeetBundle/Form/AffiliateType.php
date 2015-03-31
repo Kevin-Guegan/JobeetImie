@@ -10,6 +10,10 @@ use Ibw\JobeetBundle\Entity\Category;
  
 class AffiliateType extends AbstractType
 {
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Form\AbstractType::buildForm()
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -19,6 +23,10 @@ class AffiliateType extends AbstractType
         ;
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Form\AbstractType::setDefaultOptions()
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -26,6 +34,10 @@ class AffiliateType extends AbstractType
         ));
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Form\FormTypeInterface::getName()
+     */
     public function getName()
     {
         return 'affiliate';

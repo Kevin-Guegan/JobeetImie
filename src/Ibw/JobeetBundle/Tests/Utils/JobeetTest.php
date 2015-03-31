@@ -6,6 +6,9 @@ use Ibw\JobeetBundle\Utils\Jobeet;
  
 class JobeetTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * 
+     */
     public function testSlugify()
     {
         $this->assertEquals('sensio', Jobeet::slugify('Sensio'));

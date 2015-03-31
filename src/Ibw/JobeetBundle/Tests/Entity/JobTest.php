@@ -13,9 +13,22 @@ use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
  
 class JobTest extends WebTestCase
 {
+    /**
+     * 
+     * @var unknown
+     */
     private $em;
+    
+    /**
+     * 
+     * @var unknown
+     */
     private $application;
  
+    /**
+     * (non-PHPdoc)
+     * @see PHPUnit_Framework_TestCase::setUp()
+     */
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -68,6 +81,9 @@ class JobTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
  
+    /**
+     * 
+     */
     public function testGetCompanySlug()
     {
         $job = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j ')
@@ -77,6 +93,9 @@ class JobTest extends WebTestCase
         $this->assertEquals($job->getCompanySlug(), Jobeet::slugify($job->getCompany()));
     }
  
+    /**
+     * 
+     */
     public function testGetPositionSlug()
     {
         $job = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j ')
@@ -86,6 +105,9 @@ class JobTest extends WebTestCase
         $this->assertEquals($job->getPositionSlug(), Jobeet::slugify($job->getPosition()));
     }
  
+    /**
+     * 
+     */
     public function testGetLocationSlug()
     {
         $job = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j ')
@@ -95,6 +117,9 @@ class JobTest extends WebTestCase
         $this->assertEquals($job->getLocationSlug(), Jobeet::slugify($job->getLocation()));
     }
  
+    /**
+     * 
+     */
     public function testSetExpiresAtValue()
     {
         $job = new Job();
@@ -103,6 +128,10 @@ class JobTest extends WebTestCase
         $this->assertEquals(time() + 86400 * 30, $job->getExpiresAt()->format('U'));
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Bundle\FrameworkBundle\Test\KernelTestCase::tearDown()
+     */
     protected function tearDown()
     {
         parent::tearDown();

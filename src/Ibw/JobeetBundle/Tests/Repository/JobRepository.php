@@ -12,9 +12,22 @@ use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
  
 class JobRepositoryTest extends WebTestCase
 {
+    /**
+     * 
+     * @var unknown
+     */
     private $em;
+    
+    /**
+     * 
+     * @var unknown
+     */
     private $application;
- 
+   
+    /**
+     * (non-PHPdoc)
+     * @see PHPUnit_Framework_TestCase::setUp()
+     */
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -67,6 +80,9 @@ class JobRepositoryTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
  
+    /**
+     * 
+     */
     public function testCountActiveJobs()
     {
         $query = $this->em->createQuery('SELECT c FROM IbwJobeetBundle:Category c');
@@ -85,6 +101,9 @@ class JobRepositoryTest extends WebTestCase
         }
     }
  
+    /**
+     * 
+     */
     public function testGetActiveJobs()
     {
         $query = $this->em->createQuery('SELECT c from IbwJobeetBundle:Category c');
@@ -102,7 +121,10 @@ class JobRepositoryTest extends WebTestCase
             $this->assertEquals($jobs_db, count($jobs_rep));
         }
     }
- 
+
+    /**
+     * 
+     */
     public function testGetActiveJob()
     {
         $query = $this->em->createQuery('SELECT j FROM IbwJobeetBundle:Job j WHERE j.expires_at > :date');
@@ -123,6 +145,10 @@ class JobRepositoryTest extends WebTestCase
         $this->assertNull($job_rep);
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Bundle\FrameworkBundle\Test\KernelTestCase::tearDown()
+     */
     protected function tearDown()
     {
         parent::tearDown();

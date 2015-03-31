@@ -9,6 +9,10 @@ class DefaultController extends Controller
 {
     // ...
  
+    /**
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function loginAction()
     {
         $request = $this->getRequest();

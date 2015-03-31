@@ -12,9 +12,22 @@ use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
  
 class CategoryRepositoryTest extends WebTestCase
 {
+    /**
+     * 
+     * @var unknown
+     */
     private $em;
+    
+    /**
+     * 
+     * @var unknown
+     */
     private $application;
  
+    /**
+     * (non-PHPdoc)
+     * @see PHPUnit_Framework_TestCase::setUp()
+     */
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -67,6 +80,9 @@ class CategoryRepositoryTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
  
+    /**
+     * 
+     */
     public function testGetWithJobs()
     {
         $query = $this->em->createQuery('SELECT c FROM IbwJobeetBundle:Category c LEFT JOIN c.jobs j WHERE j.expires_at > :date');
@@ -79,6 +95,10 @@ class CategoryRepositoryTest extends WebTestCase
         $this->assertEquals(count($categories_rep), count($categories_db));
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Bundle\FrameworkBundle\Test\KernelTestCase::tearDown()
+     */
     protected function tearDown()
     {
         parent::tearDown();

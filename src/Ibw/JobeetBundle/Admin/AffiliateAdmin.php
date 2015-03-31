@@ -13,12 +13,20 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class AffiliateAdmin extends Admin
 {
+    /**
+     * 
+     * @var unknown
+     */
     protected $datagridValues = array(
         '_sort_order' => 'ASC',
         '_sort_by' => 'is_active',
         'is_active' => array('value' => 2) // The value 2 represents that the displayed affiliate accounts are not activated yet
     );
- 
+    
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureFormFields()
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -26,14 +34,22 @@ class AffiliateAdmin extends Admin
             ->add('url')
         ;
     }
- 
+    
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureDatagridFilters()
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('email')
             ->add('is_active');
     }
- 
+
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureListFields()
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -47,6 +63,10 @@ class AffiliateAdmin extends Admin
             ;
     }
     
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::getBatchActions()
+     */
     public function getBatchActions()
     {
         $actions = parent::getBatchActions();
@@ -66,6 +86,10 @@ class AffiliateAdmin extends Admin
         return $actions;
     }
     
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureRoutes()
+     */
     protected function configureRoutes(RouteCollection $collection) {
         parent::configureRoutes($collection);
     

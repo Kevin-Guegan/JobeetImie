@@ -8,6 +8,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  
 class AffiliateAdminController extends Controller
 {
+    /**
+     * 
+     * @param ProxyQueryInterface $selectedModelQuery
+     * @throws AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function batchActionActivate(ProxyQueryInterface $selectedModelQuery)
     {
         if($this->admin->isGranted('EDIT') === false || $this->admin->isGranted('DELETE') === false) {
@@ -35,6 +41,12 @@ class AffiliateAdminController extends Controller
         return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
     }
  
+    /**
+     * 
+     * @param ProxyQueryInterface $selectedModelQuery
+     * @throws AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function batchActionDeactivate(ProxyQueryInterface $selectedModelQuery)
     {
         if($this->admin->isGranted('EDIT') === false || $this->admin->isGranted('DELETE') === false) {
@@ -62,6 +74,12 @@ class AffiliateAdminController extends Controller
         return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
     }
     
+    /**
+     * 
+     * @param unknown $id
+     * @throws AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function activateAction($id)
     {
         if($this->admin->isGranted('EDIT') === false) {
@@ -84,6 +102,12 @@ class AffiliateAdminController extends Controller
     
     }
     
+    /**
+     * 
+     * @param unknown $id
+     * @throws AccessDeniedException
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deactivateAction($id)
     {
         if($this->admin->isGranted('EDIT') === false) {

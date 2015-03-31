@@ -13,11 +13,19 @@ use Ibw\JobeetBundle\Entity\Job;
 class JobAdmin extends Admin
 {
     // setup the defaut sort column and order
+    /**
+     * 
+     * @var unknown
+     */
     protected $datagridValues = array(
         '_sort_order' => 'DESC',
         '_sort_by' => 'created_at'
     );
  
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureFormFields()
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -36,6 +44,10 @@ class JobAdmin extends Admin
         ;
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureDatagridFilters()
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -50,6 +62,10 @@ class JobAdmin extends Admin
         ;
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureListFields()
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -71,7 +87,11 @@ class JobAdmin extends Admin
         ;
     }
  
-    protected function configureShowField(ShowMapper $showMapper)
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::configureShowFields()
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
             ->add('category')
@@ -91,6 +111,10 @@ class JobAdmin extends Admin
         ;
     }
     
+    /**
+     * (non-PHPdoc)
+     * @see \Sonata\AdminBundle\Admin\Admin::getBatchActions()
+     */
     public function getBatchActions()
     {
         // retrieve the default (currently only the delete action) actions

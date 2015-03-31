@@ -4,6 +4,11 @@ namespace Ibw\JobeetBundle\Utils;
  
 class Jobeet
 {
+    /**
+     * 
+     * @param unknown $text
+     * @return string|mixed
+     */
     static public function slugify($text)
 	{
 	    // replace non letter or digits by -

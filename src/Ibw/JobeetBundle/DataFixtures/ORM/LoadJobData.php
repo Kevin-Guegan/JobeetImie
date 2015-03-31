@@ -8,6 +8,10 @@ use Ibw\JobeetBundle\Entity\Job;
  
 class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * (non-PHPdoc)
+     * @see \Doctrine\Common\DataFixtures\FixtureInterface::load()
+     */
     public function load(ObjectManager $em)
     {
         $job_sensio_labs = new Job();
@@ -83,6 +87,10 @@ class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
         $em->persist($job_expired);
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Doctrine\Common\DataFixtures\OrderedFixtureInterface::getOrder()
+     */
     public function getOrder()
     {
         return 2; // the order in which fixtures will be loaded

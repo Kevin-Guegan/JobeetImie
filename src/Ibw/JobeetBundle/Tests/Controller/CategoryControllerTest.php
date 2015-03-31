@@ -12,8 +12,21 @@ use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
  
 class CategoryControllerTest extends WebTestCase
 {
+    /**
+     * 
+     * @var unknown
+     */
     private $em;
+    /**
+     * 
+     * @var unknown
+     */
     private $application;
+    
+    /**
+     * (non-PHPdoc)
+     * @see PHPUnit_Framework_TestCase::setUp()
+     */
     public function setUp()
     {
         static::$kernel = static::createKernel();
@@ -66,6 +79,9 @@ class CategoryControllerTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
  
+    /**
+     * 
+     */
     public function testShow()
     {
         $kernel = static::createKernel();

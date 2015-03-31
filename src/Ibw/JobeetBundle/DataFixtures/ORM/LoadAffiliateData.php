@@ -8,6 +8,10 @@ use Ibw\JobeetBundle\Entity\Affiliate;
  
 class LoadAffiliateData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * (non-PHPdoc)
+     * @see \Doctrine\Common\DataFixtures\FixtureInterface::load()
+     */
     public function load(ObjectManager $em)
     {
         $affiliate = new Affiliate();
@@ -34,6 +38,10 @@ class LoadAffiliateData extends AbstractFixture implements OrderedFixtureInterfa
         $this->addReference('affiliate', $affiliate);
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Doctrine\Common\DataFixtures\OrderedFixtureInterface::getOrder()
+     */
     public function getOrder()
     {
         return 3; // This represents the order in which fixtures will be loaded

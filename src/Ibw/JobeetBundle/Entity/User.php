@@ -79,21 +79,38 @@ class User implements UserInterface
         return $this->password;
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::getRoles()
+     */
     public function getRoles()
     {
         return array('ROLE_ADMIN');
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::getSalt()
+     */
     public function getSalt()
     {
         return null;
     }
  
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::eraseCredentials()
+     */
     public function eraseCredentials()
     {
  
     }
  
+    /**
+     * 
+     * @param User $user
+     * @return boolean
+     */
     public function equals(User $user)
     {
         return $user->getUsername() == $this->getUsername();
